@@ -1,0 +1,11 @@
+<view class="container" style="padding: 30px 20px;">
+  <view style="font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 20px; color: #333;">
+    {{title}}
+  </view>
+  
+  <view style="font-size: 16px; color: #666; line-height: 1.8; margin-bottom: 50px; text-indent: 2em;">
+    {{description}}
+  </view>
+  
+  <button type="primary" bindtap="startRealTest" style="width: 80%; border-radius: 25px;">正式开始测试</button>
+</view>

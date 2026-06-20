@@ -1,0 +1,18 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mutao_base?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    username: your_db_username
+    password: your_db_password
+
+  # 微信小程序配置
+wechat:
+  appid: your_wechat_appid
+  secret: your_wechat_app_secret
+
+# PDF 报告生成配置
+pdf:
+  font-path: C:/Windows/Fonts/simhei.ttf  # 中文字体路径，Linux 改为 /usr/share/fonts/truetype/...

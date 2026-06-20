@@ -1,0 +1,72 @@
+/* 整个页面的底色 */
+.home-container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding-bottom: 120rpx; /* 给底部 tabBar 留空 */
+}
+
+/* 轮播图样式 */
+.banner {
+  width: 100%;
+  height: 220px; /* 轮播图高度 */
+}
+.banner-img {
+  width: 100%;
+  height: 100%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/* 欢迎语区域 */
+.welcome-section {
+  padding: 25px 20px 10px;
+  text-align: center;
+}
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+.subtitle {
+  font-size: 14px;
+  color: #888;
+}
+
+/* 核心：方形按钮网格布局 */
+.nav-grid {
+  display: flex;
+  justify-content: space-between; /* 两个按钮平分左右 */
+  padding: 20px;
+  margin-top: 10px;
+}
+
+/* 统一的方形卡片样式 */
+.nav-card {
+  width: 46%; /* 占据将近一半的宽度 */
+  aspect-ratio: 1 / 1; /* ✨极其关键：强制保持 1:1 的正方形比例 */
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* 用不同的淡色系区分两个按钮 */
+.counselor-card {
+  background: linear-gradient(135deg, #e6f7ff 0%, #bae7ff 100%);
+}
+.assessment-card {
+  background: linear-gradient(135deg, #f6ffed 0%, #d9f7be 100%);
+}
+
+.icon {
+  font-size: 45px;
+  margin-bottom: 12px;
+}
+.card-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}

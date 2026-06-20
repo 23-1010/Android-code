@@ -1,0 +1,66 @@
+page { background: #f5f6f8; }
+
+/* 基础卡片样式 */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+.card-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  border-left: 4px solid #07c160;
+  padding-left: 10px;
+}
+
+/* 完美复刻的表格样式 */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+.tr { display: flex; width: 100%; }
+.th, .td {
+  flex: 1;
+  text-align: center;
+  padding: 10px 5px;
+  font-size: 13px;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.th { background: #f9fafc; font-weight: bold; color: #555; }
+.td { color: #333; }
+
+/* 四格评级条样式 */
+.rating-bar {
+  display: flex;
+  width: 100%;
+  height: 28px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f0f0f0;
+  margin: 15px 0;
+}
+.rating-item {
+  flex: 1;
+  text-align: center;
+  line-height: 28px;
+  font-size: 12px;
+  color: #888;
+  border-right: 1px solid #fff;
+}
+
+/* 👇 这里改成了纯英文类名，彻底杜绝乱码 */
+.rating-item.active-level-1 { background: #07c160; color: #fff; font-weight: bold;}
+.rating-item.active-level-2 { background: #1890ff; color: #fff; font-weight: bold;}
+.rating-item.active-level-3 { background: #faad14; color: #fff; font-weight: bold;}
+.rating-item.active-level-4 { background: #ff4d4f; color: #fff; font-weight: bold;}

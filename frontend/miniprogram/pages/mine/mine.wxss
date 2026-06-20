@@ -1,0 +1,451 @@
+.mine-container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding-bottom: 120rpx;
+}
+
+/* ===== 个人信息卡片 ===== */
+.profile-card {
+  background: linear-gradient(135deg, #07c160 0%, #05a34f 100%);
+  margin: 20rpx;
+  border-radius: 20rpx;
+  padding: 40rpx 30rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4rpx 20rpx rgba(7, 193, 96, 0.25);
+}
+
+.avatar-wrap {
+  position: relative;
+  margin-right: 24rpx;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.3);
+}
+
+.avatar-tip {
+  text-align: center;
+  font-size: 20rpx;
+  color: rgba(255,255,255,0.8);
+  margin-top: 6rpx;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 8rpx;
+}
+
+/* 学生卡片 */
+.student-card {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  box-shadow: 0 4rpx 20rpx rgba(24, 144, 255, 0.25);
+}
+
+.student-meta-row {
+  display: flex;
+  gap: 16rpx;
+}
+
+.student-meta {
+  font-size: 24rpx;
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.2);
+  padding: 4rpx 16rpx;
+  border-radius: 16rpx;
+}
+
+.title {
+  font-size: 24rpx;
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.2);
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: 16rpx;
+}
+
+/* ===== 通用分区 ===== */
+.section {
+  background: #fff;
+  margin: 0 20rpx 20rpx;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-action {
+  font-size: 26rpx;
+  color: #07c160;
+  padding: 8rpx 20rpx;
+  border: 2rpx solid #07c160;
+  border-radius: 24rpx;
+}
+
+/* ===== 展示模式 ===== */
+.desc-item {
+  margin-bottom: 20rpx;
+}
+
+.desc-label {
+  font-size: 26rpx;
+  color: #999;
+  display: block;
+  margin-bottom: 6rpx;
+}
+
+.desc-value {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.7;
+}
+
+.full-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ===== 编辑模式 ===== */
+.desc-edit {
+  padding-top: 10rpx;
+}
+
+.form-item {
+  margin-bottom: 24rpx;
+}
+
+.form-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 8rpx;
+}
+
+.form-input {
+  width: 100%;
+  height: 80rpx;
+  border: 2rpx solid #e8e8e8;
+  border-radius: 12rpx;
+  padding: 0 16rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.form-textarea {
+  width: 100%;
+  height: 200rpx;
+  border: 2rpx solid #e8e8e8;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.picker-input {
+  display: flex;
+  align-items: center;
+  color: #333;
+}
+
+.picker-input:empty::before {
+  content: attr(placeholder);
+  color: #999;
+}
+
+.form-btns {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 30rpx;
+}
+
+.btn-cancel,
+.btn-save {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  text-align: center;
+  padding: 0;
+}
+
+.btn-cancel {
+  background: #f5f5f5;
+  color: #666;
+  border: none;
+}
+
+.btn-save {
+  background: #07c160;
+  color: #fff;
+  border: none;
+}
+
+/* ===== 菜单项 ===== */
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8rpx 0;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-icon {
+  font-size: 44rpx;
+  margin-right: 16rpx;
+}
+
+.menu-text {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.menu-right {
+  display: flex;
+  align-items: center;
+}
+
+.menu-count {
+  font-size: 24rpx;
+  color: #07c160;
+  background: rgba(7, 193, 96, 0.08);
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+  margin-right: 12rpx;
+}
+
+.menu-arrow {
+  font-size: 36rpx;
+  color: #ccc;
+}
+
+/* ===== 绑定码 ===== */
+.bind-code-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 0 8rpx;
+}
+
+.bind-code-num {
+  font-size: 56rpx;
+  font-weight: bold;
+  color: #1890ff;
+  letter-spacing: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.bind-code-tip {
+  font-size: 22rpx;
+  color: #999;
+}
+
+/* ===== 我的消息 ===== */
+.msg-badge {
+  font-size: 22rpx;
+  color: #fff;
+  background: #ff4d4f;
+  min-width: 36rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  text-align: center;
+  border-radius: 18rpx;
+  padding: 0 10rpx;
+}
+
+.request-list {
+  margin-top: 8rpx;
+}
+
+.request-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.request-item:last-child {
+  border-bottom: none;
+}
+
+.request-info {
+  flex: 1;
+}
+
+.request-name {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 4rpx;
+}
+
+.request-time {
+  font-size: 22rpx;
+  color: #aaa;
+}
+
+.request-actions {
+  display: flex;
+  gap: 12rpx;
+  flex-shrink: 0;
+}
+
+.btn-approve,
+.btn-reject {
+  font-size: 24rpx;
+  padding: 8rpx 24rpx;
+  border-radius: 20rpx;
+}
+
+.btn-approve {
+  background: #07c160;
+  color: #fff;
+}
+
+.btn-reject {
+  background: #f5f5f5;
+  color: #999;
+}
+
+/* ===== 绑定老师（学生端） ===== */
+.teacher-card {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 0;
+}
+
+.teacher-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  background: #f0f0f0;
+}
+
+.teacher-info {
+  flex: 1;
+}
+
+.teacher-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4rpx;
+}
+
+.teacher-title {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.teacher-badge {
+  font-size: 22rpx;
+  color: #07c160;
+  background: rgba(7, 193, 96, 0.08);
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.bind-pending {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24rpx 0;
+}
+
+.pending-icon {
+  font-size: 48rpx;
+  margin-bottom: 12rpx;
+}
+
+.pending-text {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.bind-form {
+  padding: 12rpx 0 0;
+}
+
+.bind-input-row {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+.bind-input {
+  flex: 1;
+  height: 72rpx;
+  border: 2rpx solid #e8e8e8;
+  border-radius: 12rpx;
+  padding: 0 16rpx;
+  font-size: 28rpx;
+  text-align: center;
+  letter-spacing: 8rpx;
+  box-sizing: border-box;
+}
+
+.bind-btn {
+  height: 72rpx;
+  line-height: 72rpx;
+  background: #1890ff;
+  color: #fff;
+  font-size: 26rpx;
+  padding: 0 28rpx;
+  border-radius: 12rpx;
+  flex-shrink: 0;
+}
+
+.bind-help {
+  font-size: 22rpx;
+  color: #bbb;
+}
+
+/* ===== 退出登录 ===== */
+.logout-section {
+  padding: 40rpx 20rpx;
+}
+
+.logout-btn {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #fff;
+  color: #ff4d4f;
+  font-size: 30rpx;
+  border-radius: 44rpx;
+  border: 2rpx solid #ff4d4f;
+  text-align: center;
+  padding: 0;
+}

@@ -1,0 +1,24 @@
+<view style="padding: 20px; background: #f9f9f9; min-height: 100vh; box-sizing: border-box;">
+  <view style="font-size: 22px; font-weight: bold; text-align: center; margin-bottom: 25px; color: #333;">
+    {{paperTitle}}
+  </view>
+
+  <view wx:for="{{questions}}" wx:key="id" wx:for-item="q" wx:for-index="idx" style="background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); box-sizing: border-box;">
+    
+    <view style="font-size: 16px; font-weight: bold; margin-bottom: 15px; color: #333; line-height: 1.5; text-align: left;">
+      {{idx + 1}}. {{q.title}}
+    </view>
+    
+    <radio-group bindchange="onRadioChange" data-qid="{{q.id}}" style="width: 100%; display: flex; flex-direction: column;">
+      
+      <label wx:for="{{q.options}}" wx:key="score" wx:for-item="opt" style="display: flex; align-items: flex-start; justify-content: flex-start; padding: 12px 0; border-bottom: 1px solid #f0f0f0; width: 100%;">
+        
+        <radio value="{{opt.score}}" color="#07c160" style="transform: scale(0.9); margin-right: 10px; margin-top: -2px;" /> 
+        <text style="font-size: 15px; color: #555; text-align: left; flex: 1; line-height: 1.4;">{{opt.label}}</text>
+        
+      </label>
+    </radio-group>
+  </view>
+
+  <button type="primary" bindtap="submitTest" style="margin-top: 30px; margin-bottom: 50px; width: 85%; border-radius: 25px;">提交答卷</button>
+</view>

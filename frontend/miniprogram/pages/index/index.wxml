@@ -1,0 +1,23 @@
+<view class="counselor-page">
+  <view class="header-title">专业咨询师团队</view>
+
+  <view class="counselor-list">
+    
+    <view class="counselor-card" wx:for="{{counselors}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      
+      <image class="avatar" src="{{item.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200'}}" mode="aspectFill"></image>
+
+      <view class="info">
+        <view class="name-title">
+          <text class="name">{{item.name}}</text>
+          <text class="title">{{item.title}}</text>
+        </view>
+        <view class="desc">{{item.shortDesc}}</view>
+      </view>
+
+      <view class="arrow">›</view>
+      
+    </view>
+    
+  </view>
+</view>

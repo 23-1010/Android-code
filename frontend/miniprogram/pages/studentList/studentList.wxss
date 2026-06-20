@@ -1,0 +1,121 @@
+.studentlist-container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding-bottom: 40rpx;
+}
+
+/* ===== 搜索栏 ===== */
+.search-bar {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.search-input {
+  flex: 1;
+  height: 72rpx;
+  background: #f5f7fa;
+  border-radius: 36rpx;
+  padding: 0 28rpx;
+  font-size: 26rpx;
+}
+
+.search-btn {
+  margin-left: 16rpx;
+  padding: 14rpx 28rpx;
+  background: #07c160;
+  color: #fff;
+  font-size: 26rpx;
+  border-radius: 36rpx;
+}
+
+/* ===== 学生列表 ===== */
+.student-list {
+  padding: 20rpx;
+}
+
+.student-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+}
+
+.student-card:active {
+  transform: scale(0.98);
+  background: #f9f9f9;
+}
+
+.student-avatar {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  background: #e8e8e8;
+  flex-shrink: 0;
+}
+
+.student-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.student-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.student-meta {
+  font-size: 24rpx;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4rpx;
+}
+
+.student-meta .danger {
+  color: #ff4d4f;
+  font-weight: 600;
+}
+
+.student-meta .safe {
+  color: #07c160;
+  font-weight: 600;
+}
+
+.student-meta.no-data {
+  color: #ccc;
+  font-style: italic;
+}
+
+.student-arrow {
+  font-size: 36rpx;
+  color: #ccc;
+  margin-left: 12rpx;
+}
+
+/* ===== 空状态 ===== */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 160rpx 0;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  margin-bottom: 24rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}

@@ -1,0 +1,16 @@
+<view style="padding: 20px; background: #f5f6f8; min-height: 100vh; box-sizing: border-box;">
+  <view style="font-size: 22px; font-weight: bold; margin-bottom: 20px; text-align: center; color: #333;">心理测评专区</view>
+
+  <view wx:for="{{assessmentList}}" wx:key="id" style="background: #fff; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+    
+    <view style="font-size: 18px; font-weight: bold; color: #333; margin-bottom: 8px;">{{item.title}}</view>
+    
+    <view style="font-size: 14px; color: #666; margin-bottom: 15px; line-height: 1.6;">
+      {{item.shortDesc}}
+    </view>
+    
+    <view style="align-self: flex-end;">
+      <button type="primary" size="mini" bindtap="goToTest" data-id="{{item.id}}" style="border-radius: 20px; margin: 0;">查看详情</button>
+    </view>
+  </view>
+</view>

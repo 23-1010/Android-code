@@ -1,0 +1,37 @@
+<view class="detail-container">
+  
+  <view class="profile-header">
+    <image class="detail-avatar" src="{{info.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200'}}" mode="aspectFill"></image>
+    <view class="detail-name">{{info.name}}</view>
+    <view class="detail-title-tag">{{info.title}}</view>
+  </view>
+
+  <view class="info-card">
+    <view class="card-title">📋 简短介绍</view>
+    <text class="card-content">{{info.shortDesc || '暂无'}}</text>
+  </view>
+
+  <view class="info-card" wx:if="{{specialtyList.length > 0}}">
+    <view class="card-title">🏷️ 擅长领域</view>
+    <view class="tags-row">
+      <text class="tag" wx:for="{{specialtyList}}" wx:key="*this">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="info-card">
+    <view class="card-title">👨‍⚕️ 详细介绍</view>
+    <text class="card-content">{{info.detailContent || '暂无详细介绍'}}</text>
+  </view>
+
+  <view class="info-card">
+    <view class="card-title">📌 咨询须知</view>
+    <view class="notice-item">1. 每次咨询时间标准为 50 分钟。</view>
+    <view class="notice-item">2. 请提前10分钟进入指定安静场所等候线上连线。</view>
+    <view class="notice-item">3. 平台严格恪守心理咨询保密原则，守护您的隐私。</view>
+  </view>
+
+  <view class="bottom-bar">
+    <button class="btn-submit" type="primary" bindtap="bookConsultation">立即预约咨询</button>
+  </view>
+
+</view>

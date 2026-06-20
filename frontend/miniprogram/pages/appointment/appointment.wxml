@@ -1,0 +1,97 @@
+<view class="appointment-container">
+
+  <!-- 日历卡片 -->
+  <view class="calendar-card">
+
+    <!-- 月份切换 -->
+    <view class="month-header">
+      <view class="month-arrow" bindtap="prevMonth">‹</view>
+      <view class="month-title">{{currentYear}}年 {{currentMonth}}月</view>
+      <view class="month-arrow" bindtap="nextMonth">›</view>
+    </view>
+
+    <view class="month-subtitle" wx:if="{{monthAppointmentCount > 0}}">
+      本月共 {{monthAppointmentCount}} 个预约
+    </view>
+
+    <!-- 星期头 -->
+    <view class="weekday-row">
+      <view class="weekday" wx:for="{{weekdays}}" wx:key="*this">{{item}}</view>
+    </view>
+
+    <!-- 日期网格 -->
+    <view class="day-grid">
+      <view
+        class="day-cell {{item.isOtherMonth ? 'other-month' : ''}} {{item.isToday ? 'today' : ''}} {{selectedDate === item.dateStr ? 'selected' : ''}}"
+        wx:for="{{days}}"
+        wx:key="dateStr"
+        data-date="{{item.dateStr}}"
+        data-other-month="{{item.isOtherMonth}}"
+        bindtap="onDayTap"
+      >
+        <view class="day-num">{{item.day}}</view>
+        <view class="day-dot" wx:if="{{item.hasAppointment}}"></view>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 选中日期的预约详情面板 -->
+  <view class="detail-panel {{showDetail ? 'show' : ''}}">
+
+    <!-- 拖拽指示条 -->
+    <view class="panel-drag-bar">
+      <view class="panel-drag-bar-inner"></view>
+    </view>
+
+    <view class="panel-header">
+      <view class="panel-title">{{selectedDate}} 预约情况</view>
+      <view class="panel-close" bindtap="closeDetail">✕</view>
+    </view>
+
+    <view class="appointment-list" wx:if="{{appointments.length > 0}}">
+      <view class="appointment-card" wx:for="{{appointments}}" wx:key="id">
+        <view class="appt-top">
+          <image class="appt-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+          <view class="appt-info">
+            <view class="appt-name">{{item.nickname || item.studentName}}</view>
+            <view class="appt-time">⏰ {{item.appointmentTime || item.appointment_time}}</view>
+          </view>
+          <view class="appt-status {{item.status}}">
+            {{item.status === 'pending' ? '待确认' : ''}}
+            {{item.status === 'confirmed' ? '已确认' : ''}}
+            {{item.status === 'cancelled' ? '已取消' : ''}}
+            {{item.status === 'completed' ? '已完成' : ''}}
+          </view>
+        </view>
+
+        <view class="appt-reason" wx:if="{{item.reason}}">
+          💬 {{item.reason}}
+        </view>
+
+        <!-- 操作按钮 -->
+        <view class="appt-actions" wx:if="{{item.status === 'pending' || item.status === 'confirmed'}}">
+          <view class="action-btn confirm" wx:if="{{item.status === 'pending'}}" data-id="{{item.id}}" data-status="confirmed" bindtap="onStatusChange">
+            确认预约
+          </view>
+          <view class="action-btn complete" wx:if="{{item.status === 'confirmed'}}" data-id="{{item.id}}" data-status="completed" bindtap="onStatusChange">
+            标记完成
+          </view>
+          <view class="action-btn cancel" data-id="{{item.id}}" data-status="cancelled" bindtap="onStatusChange">
+            取消
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 当天无预约 -->
+    <view class="empty" wx:if="{{appointments.length === 0}}">
+      <view class="empty-icon">📭</view>
+      <view class="empty-text">当日暂无预约</view>
+    </view>
+  </view>
+
+  <!-- 遮罩层 -->
+  <view class="overlay {{showDetail ? 'show' : ''}}" bindtap="closeDetail"></view>
+
+</view>

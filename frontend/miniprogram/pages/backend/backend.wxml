@@ -1,0 +1,65 @@
+<view class="backend-container">
+
+  <!-- 顶部统计卡片 -->
+  <view class="stats-row">
+    <view class="stat-card">
+      <view class="stat-num">{{stats.totalStudents}}</view>
+      <view class="stat-label">在管学生</view>
+    </view>
+    <view class="stat-card">
+      <view class="stat-num">{{stats.monthAssessments}}</view>
+      <view class="stat-label">本月测评</view>
+    </view>
+    <view class="stat-card warning">
+      <view class="stat-num">{{stats.warningCount}}</view>
+      <view class="stat-label">预警人数</view>
+    </view>
+    <view class="stat-card">
+      <view class="stat-num">{{stats.pendingAppointments}}</view>
+      <view class="stat-label">待处理预约</view>
+    </view>
+  </view>
+
+  <!-- 筛选 Tab -->
+  <view class="filter-row">
+    <view class="filter-item {{filterType === 'all' ? 'active' : ''}}" data-type="all" bindtap="onFilterTap">全部</view>
+    <view class="filter-item {{filterType === 'SCL90' ? 'active' : ''}}" data-type="SCL90" bindtap="onFilterTap">SCL-90</view>
+    <view class="filter-item {{filterType === 'SDS' ? 'active' : ''}}" data-type="SDS" bindtap="onFilterTap">SDS 抑郁</view>
+  </view>
+
+  <!-- 测评记录列表 -->
+  <view class="record-list">
+    <view
+      class="record-card"
+      wx:for="{{records}}"
+      wx:key="id"
+      bindtap="onRecordTap"
+      data-record-id="{{item.id}}"
+    >
+      <view class="card-top">
+        <text class="student-name">👤 {{item.nickname}}</text>
+        <text class="time">{{item.create_time}}</text>
+      </view>
+
+      <view class="card-mid">
+        <text class="scale-name">量表：{{item.scale_name}}</text>
+      </view>
+
+      <view class="card-bottom">
+        <view class="result-row">
+          <text class="result-label">总分：{{item.total_score}}</text>
+          <text class="result-label">系统判定：</text>
+          <text class="rating {{item.result_rating == '重度抑郁' || item.result_rating == '阳性' ? 'danger' : 'safe'}}">{{item.result_rating}}</text>
+        </view>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty" wx:if="{{records.length === 0}}">
+      <view class="empty-icon">📋</view>
+      <view class="empty-text">暂无测评记录</view>
+    </view>
+  </view>
+
+</view>

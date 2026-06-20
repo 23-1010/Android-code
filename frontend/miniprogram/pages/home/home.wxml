@@ -1,0 +1,29 @@
+<view class="home-container">
+
+  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" circular="true">
+    <swiper-item>
+      <image src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" mode="aspectFill" class="banner-img"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" mode="aspectFill" class="banner-img"></image>
+    </swiper-item>
+  </swiper>
+
+  <view class="welcome-section">
+    <view class="title">欢迎来到心理健康空间</view>
+    <view class="subtitle">倾听你的心声，守护你的成长</view>
+  </view>
+
+  <view class="nav-grid">
+    <view class="nav-card counselor-card" bindtap="goToCounselors">
+      <view class="icon">👨‍🏫</view>
+      <view class="card-text">咨询师介绍</view>
+    </view>
+
+    <view class="nav-card assessment-card" bindtap="goToAssessments">
+      <view class="icon">📝</view>
+      <view class="card-text">心理测评专区</view>
+    </view>
+  </view>
+
+</view>

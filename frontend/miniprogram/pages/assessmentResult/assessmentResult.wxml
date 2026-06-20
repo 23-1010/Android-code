@@ -1,0 +1,87 @@
+<view style="padding: 15px; padding-bottom: 50px;">
+  <view style="text-align: center; font-size: 22px; font-weight: bold; margin: 10px 0 25px;">测试评估报告</view>
+
+  <block wx:if="{{report.reportType === 'SCL90'}}">
+    <view class="card">
+      <view class="card-title">总评估结果报告</view>
+      <view class="table">
+        <view class="tr">
+          <view class="th">总评分</view>
+          <view class="th">平均分数</view>
+          <view class="th">评估结果</view>
+          <view class="th">阳性项目</view>
+          <view class="th">评级</view>
+        </view>
+        <view class="tr">
+          <view class="td" style="color: #e64340; font-weight: bold; font-size: 16px;">{{report.totalScore}}</view>
+          <view class="td">{{report.overallAvg}}</view>
+          <view class="td" style="color: {{report.isPositive == '阳性' ? '#e64340' : '#07c160'}}">{{report.isPositive}}</view>
+          <view class="td">{{report.positiveCount}}</view>
+          <view class="td">{{report.overallRating}}</view>
+        </view>
+      </view>
+      <view style="font-size: 12px; color: #666; margin-top: 15px; line-height: 1.6; background: #f9f9f9; padding: 10px; border-radius: 6px;">
+        <text style="font-weight: bold;">说明：</text>您的总评分为{{report.totalScore}}分，阳性项目数为{{report.positiveCount}}项，总评估结果为{{report.isPositive}}。
+      </view>
+    </view>
+
+    <view class="card" style="height: 320px; padding: 10px 0;">
+      <ec-canvas id="mychart-dom-radar" canvas-id="mychart-radar" ec="{{ ec }}"></ec-canvas>
+    </view>
+
+    <view class="card" wx:for="{{report.dimensions}}" wx:key="name">
+      <view class="card-title">{{item.name}}因子</view>
+      
+      <view style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 10px;">
+        <text>得分：<text style="font-weight:bold; color:#333;">{{item.total}}</text></text>
+        <text>均分：<text style="font-weight:bold; color:#333;">{{item.avg}}</text></text>
+      </view>
+      
+      <view class="rating-bar">
+        <view class="rating-item {{item.rating == '正常' ? 'active-level-1' : ''}}">正常</view>
+        <view class="rating-item {{item.rating == '轻度' ? 'active-level-2' : ''}}">轻度</view>
+        <view class="rating-item {{item.rating == '中度' ? 'active-level-3' : ''}}">中度</view>
+        <view class="rating-item {{item.rating == '重度' ? 'active-level-4' : ''}}">重度</view>
+      </view>
+
+      <view style="font-size: 13px; color: #444; line-height: 1.6; margin-top: 15px; padding: 12px; background: #fafafa; border-radius: 8px; border: 1px solid #f0f0f0;">
+        <text style="display: block; margin-bottom: 6px;">根据因子均分，您的此项评估为 <text style="font-weight:bold; color: {{item.avg >= 3 ? '#ff4d4f' : (item.avg >= 2 ? '#faad14' : '#07c160')}}">【{{item.rating}}】</text>。</text>
+        <text style="display: block; text-align: justify;">{{item.adviceText}}</text>
+      </view>
+
+    </view>
+  </block>
+
+  <block wx:elif="{{report.reportType === 'SDS'}}">
+    <view class="card">
+      <view class="card-title">测评分数分析</view>
+      <view style="text-align: center; margin: 30px 0;">
+        <view style="font-size: 14px; color: #888; margin-bottom: 5px;">标准总分</view>
+        <view style="font-size: 48px; font-weight: bold; color: #07c160;">{{report.standardScore}}</view>
+        <view style="font-size: 14px; color: #666; margin-top: 10px;">(原始得分：{{report.rawScore}})</view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">诊断参考结果</view>
+      <view style="font-size: 18px; text-align: center; font-weight: bold; color: {{report.rating == '正常' ? '#07c160' : '#ff4d4f'}}; margin: 20px 0;">
+        【 {{report.rating}} 】
+      </view>
+      
+      <view class="rating-bar">
+        <view class="rating-item {{report.rating == '正常' ? 'active-level-1' : ''}}">正常 (0-50)</view>
+        <view class="rating-item {{report.rating == '轻度抑郁' ? 'active-level-2' : ''}}">轻度 (50-59)</view>
+        <view class="rating-item {{report.rating == '中度抑郁' ? 'active-level-3' : ''}}">中度 (60-69)</view>
+        <view class="rating-item {{report.rating == '重度抑郁' ? 'active-level-4' : ''}}">重度 (70-100)</view>
+      </view>
+    </view>
+  </block>
+
+  <view style="font-size: 12px; color: #999; line-height: 1.6; text-align: justify; padding: 0 10px; margin-top: 20px;">
+    补充提示：测试分数反映的是您近期的心理感受，仅供辅助筛查参考，不做专业临床诊断依据。
+  </view>
+  <button type="primary" bindtap="backToHome" style="margin-top: 30px; border-radius: 25px; width: 85%; white-space: nowrap;">返回量表大厅</button>
+  <view style="text-align: center; margin-top: 16px;" bindtap="printReport">
+    <text style="color: #999; font-size: 14px; text-decoration: underline;">打印报告</text>
+  </view>
+</view>

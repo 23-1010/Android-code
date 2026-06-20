@@ -1,0 +1,215 @@
+<!-- ========== 老师端 ========== -->
+<block wx:if="{{role === 'teacher'}}">
+<view class="mine-container">
+
+  <!-- 顶部个人信息卡片 -->
+  <view class="profile-card">
+    <view class="avatar-wrap" bindtap="onChangeAvatar" bindlongpress="onDevSwitch">
+      <image class="avatar" src="{{teacherInfo.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200'}}" mode="aspectFill"></image>
+      <view class="avatar-tip">点击更换</view>
+    </view>
+    <view class="profile-info">
+      <view class="name">{{teacherInfo.name || '未设置姓名'}}</view>
+      <view class="title">{{teacherInfo.title || '未设置头衔'}}</view>
+    </view>
+  </view>
+
+  <!-- 绑定码展示 -->
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title">🔑 我的绑定码</view>
+    </view>
+    <view class="bind-code-row">
+      <text class="bind-code-num">{{bindCode || '加载中...'}}</text>
+      <text class="bind-code-tip">将此码发给学生，学生输入后即可绑定</text>
+    </view>
+  </view>
+
+  <!-- 我的消息 -->
+  <view class="section" wx:if="{{requestCount > 0}}">
+    <view class="section-header">
+      <view class="section-title">📬 我的消息</view>
+      <view class="msg-badge">{{requestCount}}</view>
+    </view>
+    <view class="request-list">
+      <view class="request-item" wx:for="{{bindRequests}}" wx:key="id">
+        <view class="request-info">
+          <view class="request-name">{{item.realName || item.nickname || '未知学生'}}</view>
+          <view class="request-time">{{item.createTime}}</view>
+        </view>
+        <view class="request-actions">
+          <view class="btn-approve" data-id="{{item.id}}" bindtap="approveRequest">通过</view>
+          <view class="btn-reject" data-id="{{item.id}}" bindtap="rejectRequest">拒绝</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 咨询师介绍区域 -->
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title">📝 咨询师介绍</view>
+      <view class="section-action" wx:if="{{!isEditing}}" bindtap="startEdit">编辑</view>
+    </view>
+    <view class="desc-display" wx:if="{{!isEditing}}">
+      <view class="desc-item">
+        <text class="desc-label">简短介绍：</text>
+        <text class="desc-value">{{teacherInfo.shortDesc || '暂无'}}</text>
+      </view>
+      <view class="desc-item">
+        <text class="desc-label">擅长领域：</text>
+        <text class="desc-value">{{teacherInfo.specialties || '暂无'}}</text>
+      </view>
+      <view class="desc-item">
+        <text class="desc-label">详细介绍：</text>
+        <text class="desc-value full-desc">{{teacherInfo.fullDesc || '暂无'}}</text>
+      </view>
+    </view>
+    <view class="desc-edit" wx:if="{{isEditing}}">
+      <view class="form-item">
+        <view class="form-label">简短介绍</view>
+        <input class="form-input" value="{{editForm.shortDesc}}" data-field="shortDesc" bindinput="onFieldInput" placeholder="例如：十年青少年心理辅导经验…" maxlength="200"/>
+      </view>
+      <view class="form-item">
+        <view class="form-label">擅长领域（逗号分隔）</view>
+        <input class="form-input" value="{{editForm.specialties}}" data-field="specialties" bindinput="onFieldInput" placeholder="如：情绪管理,学业压力,亲子关系" maxlength="200"/>
+      </view>
+      <view class="form-item">
+        <view class="form-label">联系电话</view>
+        <input class="form-input" value="{{editForm.phone}}" data-field="phone" bindinput="onFieldInput" placeholder="手机号" maxlength="20"/>
+      </view>
+      <view class="form-item">
+        <view class="form-label">详细介绍</view>
+        <textarea class="form-textarea" value="{{editForm.fullDesc}}" data-field="fullDesc" bindinput="onFieldInput" placeholder="完整介绍内容…" maxlength="1000"/>
+      </view>
+      <view class="form-btns">
+        <button class="btn-cancel" bindtap="cancelEdit">取消</button>
+        <button class="btn-save" bindtap="saveProfile">保存</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 我的学生入口 -->
+  <view class="section">
+    <view class="menu-item" bindtap="goToMyStudents">
+      <view class="menu-left">
+        <view class="menu-icon">👨‍🎓</view>
+        <view class="menu-text">我的学生</view>
+      </view>
+      <view class="menu-right">
+        <text class="menu-count" wx:if="{{studentCount > 0}}">{{studentCount}} 人</text>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="logout-section">
+    <button class="logout-btn" bindtap="onLogout">退出登录</button>
+  </view>
+
+</view>
+</block>
+
+<!-- ========== 学生端 ========== -->
+<block wx:if="{{role === 'student'}}">
+<view class="mine-container">
+
+  <!-- 学生个人信息卡片 -->
+  <view class="profile-card student-card" bindlongpress="onDevSwitch">
+    <view class="profile-info">
+      <view class="name">{{studentInfo.realName || '未设置姓名'}}</view>
+      <view class="student-meta-row">
+        <text class="student-meta" wx:if="{{studentInfo.gender}}">{{studentInfo.gender}}</text>
+        <text class="student-meta" wx:if="{{studentInfo.age > 0}}">{{studentInfo.age}} 岁</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 绑定老师 -->
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title">🔗 我的老师</view>
+    </view>
+
+    <!-- 已绑定状态 -->
+    <view class="teacher-bound" wx:if="{{bindStatus === 'bound' && myTeacher}}">
+      <view class="teacher-card">
+        <image class="teacher-avatar" src="{{myTeacher.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200'}}" mode="aspectFill"></image>
+        <view class="teacher-info">
+          <view class="teacher-name">{{myTeacher.name}}</view>
+          <view class="teacher-title">{{myTeacher.title || '心理咨询师'}}</view>
+        </view>
+        <view class="teacher-badge">已绑定</view>
+      </view>
+    </view>
+
+    <!-- 待审核状态 -->
+    <view class="bind-pending" wx:if="{{bindStatus === 'pending'}}">
+      <view class="pending-icon">⏳</view>
+      <text class="pending-text">申请审核中，请等待老师确认...</text>
+    </view>
+
+    <!-- 未绑定状态 -->
+    <view class="bind-form" wx:if="{{bindStatus === 'none'}}">
+      <view class="bind-input-row">
+        <input class="bind-input" value="{{bindCodeInput}}" bindinput="onBindCodeInput" placeholder="输入4位绑定码" maxlength="4" type="number"/>
+        <view class="bind-btn" bindtap="submitBindRequest">绑定老师</view>
+      </view>
+      <text class="bind-help">请向老师索取4位绑定码</text>
+    </view>
+  </view>
+
+  <!-- 个人资料区域 -->
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title">👤 个人资料</view>
+      <view class="section-action" wx:if="{{!isEditingStudent}}" bindtap="startEditStudent">编辑</view>
+    </view>
+    <view class="desc-display" wx:if="{{!isEditingStudent}}">
+      <view class="desc-item">
+        <text class="desc-label">姓名</text>
+        <text class="desc-value">{{studentInfo.realName || '未填写'}}</text>
+      </view>
+      <view class="desc-item">
+        <text class="desc-label">性别</text>
+        <text class="desc-value">{{studentInfo.gender || '未填写'}}</text>
+      </view>
+      <view class="desc-item">
+        <text class="desc-label">出生年月</text>
+        <text class="desc-value">{{studentInfo.birthDate || '未填写'}}</text>
+      </view>
+      <view class="desc-item" wx:if="{{studentInfo.age > 0}}">
+        <text class="desc-label">年龄</text>
+        <text class="desc-value">{{studentInfo.age}} 岁</text>
+      </view>
+    </view>
+    <view class="desc-edit" wx:if="{{isEditingStudent}}">
+      <view class="form-item">
+        <view class="form-label">真实姓名</view>
+        <input class="form-input" value="{{studentEditForm.realName}}" data-field="realName" bindinput="onStudentFieldInput" placeholder="请输入真实姓名" maxlength="20"/>
+      </view>
+      <view class="form-item">
+        <view class="form-label">性别</view>
+        <picker mode="selector" range="{{['男', '女', '其他']}}" value="{{studentEditForm.gender === '女' ? 1 : studentEditForm.gender === '其他' ? 2 : 0}}" bindchange="onGenderChange">
+          <view class="form-input picker-input">{{studentEditForm.gender || '请选择性别'}}</view>
+        </picker>
+      </view>
+      <view class="form-item">
+        <view class="form-label">出生年月</view>
+        <picker mode="date" fields="month" value="{{studentEditForm.birthDate}}" start="1970-01" end="{{currentDate}}" bindchange="onDateChange">
+          <view class="form-input picker-input">{{studentEditForm.birthDate || '请选择出生年月'}}</view>
+        </picker>
+      </view>
+      <view class="form-btns">
+        <button class="btn-cancel" bindtap="cancelEditStudent">取消</button>
+        <button class="btn-save" bindtap="saveStudentProfile">保存</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="logout-section">
+    <button class="logout-btn" bindtap="onLogout">退出登录</button>
+  </view>
+
+</view>
+</block>

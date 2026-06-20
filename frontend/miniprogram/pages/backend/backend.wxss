@@ -1,0 +1,156 @@
+.backend-container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding-bottom: 120rpx;
+}
+
+/* ===== 统计卡片行 ===== */
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx;
+  gap: 16rpx;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: calc(50% - 24rpx);
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+}
+
+.stat-num {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.stat-card.warning .stat-num {
+  color: #ff4d4f;
+}
+
+/* ===== 筛选行 ===== */
+.filter-row {
+  display: flex;
+  gap: 16rpx;
+  padding: 0 20rpx 20rpx;
+}
+
+.filter-item {
+  padding: 12rpx 28rpx;
+  border-radius: 32rpx;
+  font-size: 24rpx;
+  color: #666;
+  background: #fff;
+  border: 2rpx solid #e8e8e8;
+}
+
+.filter-item.active {
+  color: #07c160;
+  border-color: #07c160;
+  background: rgba(7, 193, 96, 0.06);
+}
+
+/* ===== 记录列表 ===== */
+.record-list {
+  padding: 0 20rpx;
+}
+
+.record-card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.student-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.time {
+  font-size: 22rpx;
+  color: #aaa;
+}
+
+.card-mid {
+  margin-bottom: 12rpx;
+}
+
+.scale-name {
+  font-size: 26rpx;
+  color: #555;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-row {
+  font-size: 22rpx;
+  color: #666;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  flex: 1;
+  overflow: hidden;
+}
+
+.result-label {
+  flex-shrink: 0;
+  margin-right: 4rpx;
+}
+
+.rating.danger {
+  color: #ff4d4f;
+  font-weight: bold;
+}
+
+.rating.safe {
+  color: #07c160;
+  font-weight: bold;
+}
+
+.arrow {
+  font-size: 36rpx;
+  color: #ccc;
+}
+
+/* ===== 空状态 ===== */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 0;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}

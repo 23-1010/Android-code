@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/backend/backend",
+    "pages/appointment/appointment",
+    "pages/mine/mine",
+    "pages/studentList/studentList",
+    "pages/assessment/assessment",
+    "pages/assessmentIntro/assessmentIntro",
+    "pages/assessmentDo/assessmentDo",
+    "pages/assessmentResult/assessmentResult",
+    "pages/counselorDetail/counselorDetail",
+    "pages/index/index",
+    "pages/teacherDashboard/teacherDashboard"
+  ],
+  "tabBar": {
+    "custom": true,
+    "color": "#999999",
+    "selectedColor": "#07c160",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      { "pagePath": "pages/home/home", "text": "主页" },
+      { "pagePath": "pages/backend/backend", "text": "后台" },
+      { "pagePath": "pages/appointment/appointment", "text": "预约" },
+      { "pagePath": "pages/mine/mine", "text": "我的" }
+    ]
+  },
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "心理测评",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "lazyCodeLoading": "requiredComponents"
+}

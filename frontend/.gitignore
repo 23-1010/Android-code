@@ -1,0 +1,14 @@
+# 微信小程序私有配置（含本地设置，不应提交）
+project.private.config.json
+
+# 依赖
+node_modules/
+miniprogram_npm/
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/

@@ -1,0 +1,109 @@
+.detail-container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding: 20px;
+  padding-bottom: 100px; /* 留出空间给底部固定按钮，防止被遮挡 */
+  box-sizing: border-box;
+}
+
+/* 个人头部名片区 */
+.profile-header {
+  background: linear-gradient(135deg, #07c160 0%, #059b4c 100%);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(7,193,96,0.15);
+  margin-bottom: 20px;
+}
+
+.detail-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.6);
+  background-color: #eee;
+  margin-bottom: 12px;
+}
+
+.detail-name {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.detail-title-tag {
+  display: inline-block;
+  font-size: 13px;
+  background-color: rgba(255,255,255,0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+/* 详情卡片样式 */
+.info-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+/* 长篇大论段落文字样式：支持自动换行，行高适中不刺眼 */
+.card-content {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+.tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  font-size: 13px;
+  color: #07c160;
+  background: rgba(7, 193, 96, 0.08);
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+.notice-item {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* 底部悬浮按钮栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+  z-index: 999;
+}
+
+.btn-submit {
+  width: 100% !important;
+  border-radius: 25px !important;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(7,193,96,0.2);
+}
